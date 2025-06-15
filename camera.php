@@ -1,27 +1,27 @@
 <?php
 // camera.php
+// Proxy the MJPEG stream so browsers see it as coming from your Apache server
 
-// Never timeout while streaming
 set_time_limit(0);
-ignore_user_abort(true);
+$streamUrl = 'http://10.0.0.74:5000/video_feed';
 
-// Tell the browser it’s getting an MJPEG stream
+// Open remote stream
+$remote = @fopen($streamUrl, 'rb');
+if (!$remote) {
+    header($_SERVER['SERVER_PROTOCOL'] . ' 502 Bad Gateway', true, 502);
+    echo 'Unable to connect to camera stream.';
+    exit;
+}
+
+// Tell the browser we're sending an MJPEG stream
 header('Content-Type: multipart/x-mixed-replace; boundary=frame');
 
-// Open a cURL handle to your Pi’s feed
-$ch = curl_init('http://10.0.0.74:5000/video_feed');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+// Relay data in real time
+while (!feof($remote)) {
+    $buffer = fread($remote, 4096);
+    if ($buffer === false) break;
+    echo $buffer;
+    @flush();
+}
 
-// As data comes in, push it straight out to the client
-curl_setopt($ch, CURLOPT_WRITEFUNCTION, function($ch, $data) {
-    echo $data;
-    // flush both PHP and web-server buffers
-    if (ob_get_level()) { ob_flush(); }
-    flush();
-    return strlen($data);
-});
-
-// Start streaming
-curl_exec($ch);
-curl_close($ch);
+fclose($remote);
