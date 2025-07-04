@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/../config.php';
 include __DIR__ . '/../includes/header.php';
-include __DIR__ . '/../includes/navbar.php';
 
 // Handle signup (later you’ll save to DB)
 $message = '';

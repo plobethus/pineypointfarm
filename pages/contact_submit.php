@@ -4,8 +4,6 @@
 // 1) Bootstrap: load DB and layout
 require __DIR__ . '/../config.php';
 include __DIR__ . '/../includes/header.php';
-include __DIR__ . '/../includes/navbar.php';
-
 // 2) Prepare variables
 $errors  = [];
 $name    = '';

@@ -1,0 +1,32 @@
+/* css/cart.css */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.cart-table th,
+.cart-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+.cart-thumb {
+  width: 50px;
+  height: auto;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.cart-actions {
+  display: flex;
+  gap: 1rem;
+}
+.button {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #ccc;
+  color: #000;
+  border-radius: 4px;
+}
+.button.primary {
+  background: var(--color-primary);
+}

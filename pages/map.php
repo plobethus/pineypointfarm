@@ -1,7 +1,6 @@
 <?php
 require __DIR__ . '/../config.php';
 include __DIR__ . '/../includes/header.php';
-include __DIR__ . '/../includes/navbar.php';
 
 // Fetch hive locations
 $stmt   = $pdo->query("SELECT id,name,stock,x_coord,y_coord FROM stores");
