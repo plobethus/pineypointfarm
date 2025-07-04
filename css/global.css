@@ -1,18 +1,19 @@
 /* css/global.css */
 
+/* 1. Color Palette */
 :root {
-  --color-primary: #FFC845;   /* Honey Yellow */
-  --color-secondary: #1A3320; /* Forest Green */
-  --color-dark: #000000;      /* Black */
-  --text-light: #FFFFFF;
+  --color-primary:    #FFC845;   /* Honey Yellow (Pantone 123 C) */
+  --color-secondary:  #1A3320;   /* Forest Green (Pantone 357 C) */
+  --color-dark:       #000000;   /* Black */
+  --text-light:       #FFFFFF;   /* Pure white for text */
 }
 
+/* 2. Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -20,86 +21,55 @@ body {
   color: var(--color-dark);
 }
 
-/* Header & Navbar */
-.header {
-  background: var(--color-secondary);
-  color: var(--text-light);
-  padding: 1rem;
-}
-
-/* Logo Container */
-.logo {
+/* 3. Navbar */
+.navbar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  background: var(--color-secondary);
+  padding: 0.75rem 1rem;
 }
-
-/* Responsive logo link/image */
 .logo-link {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
-
 .logo-img {
-  max-height: 3.5rem; /* adjust as needed */
+  max-height: 3rem;
   height: auto;
   width: auto;
   max-width: 100%;
 }
-
-/* Site title next to logo */
-.logo h1 {
-  margin-left: 0.75rem;
-  color: var(--color-primary);
-  font-size: 2rem;
+.site-title {
+  margin-left: 0.5rem;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  font-weight: bold;
 }
-
-.nav ul {
+.nav-links {
   list-style: none;
-  text-align: center;
-  margin-top: 0.5rem;
+  display: flex;
 }
-
-.nav ul li {
-  display: inline-block;
-  margin: 0 0.75rem;
+.nav-links li {
+  margin: 0 1rem;
 }
-
-.nav ul li a {
+.nav-links a {
   color: var(--text-light);
   text-decoration: none;
   font-weight: bold;
 }
-
-.nav ul li a:hover,
-.nav ul li a.active {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--color-primary);
 }
 
-/* Sections */
+/* 4. Generic Section Styling */
 .section {
   padding: 2rem;
   text-align: center;
 }
 
-.about {
-  background: var(--color-primary);
-  color: var(--color-dark);
-}
-
-.live {
-  background: #FFF;
-}
-
-.products {
-  background: #FFF;
-}
-
-.contact {
-  background: var(--color-dark);
-  color: var(--text-light);
-}
-
-/* Footer */
+/* 5. Footer */
 .footer {
   background: var(--color-secondary);
   color: var(--text-light);
@@ -107,3 +77,6 @@ body {
   padding: 1rem;
   font-size: 0.9rem;
 }
+
+/* NOTE: Any page-specific styling (grids, map positioning, form layout, etc.)
+   should go in its own CSS file, e.g. css/about.css, css/live.css, css/map.css, etc. */
