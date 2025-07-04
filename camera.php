@@ -3,7 +3,7 @@
 // Proxy the MJPEG stream so browsers see it as coming from your Apache server
 
 set_time_limit(0);
-$streamUrl = 'http://10.0.0.74:5000/video_feed';
+$streamUrl = 'http://10.0.0.8:5000/video_feed';
 
 // Open remote stream
 $remote = @fopen($streamUrl, 'rb');
