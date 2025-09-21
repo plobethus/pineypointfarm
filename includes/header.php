@@ -20,7 +20,7 @@ function isActive($page) {
 <nav class="navbar">
   <a href="/index.php" class="logo-link">
     <img src="/images/logo.png" alt="Piney Point Farm" class="logo-img">
-    <span class="site-title">Piney Point Farm</span>
+    
   </a>
   <ul class="nav-links">
     <li><a href="/index.php"             class="<?= isActive('index.php') ?>">Home</a></li>

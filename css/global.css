@@ -1,82 +1,173 @@
 /* css/global.css */
 
-/* 1. Color Palette */
+/* 1. Import Brand Fonts */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Allura&family=Lora:wght@400;700&display=swap');
+
+/* 2. Color Palette */
 :root {
-  --color-primary:    #FFC845;   /* Honey Yellow (Pantone 123 C) */
-  --color-secondary:  #1A3320;   /* Forest Green (Pantone 357 C) */
-  --color-dark:       #000000;   /* Black */
-  --text-light:       #FFFFFF;   /* Pure white for text */
+  /* Primary blacks & golds */
+  --color-black:      #0A0A0A;   /* Dark background, text */
+  --color-gold:       #E5B85C;   /* Logo gold */
+  --color-gold-dark:  #C49A45;   /* Hover, accents */
+  --color-gold-light: #F1D9A2;   /* Borders, highlights */
+  --color-gold-pale:  #F8F5E3;   /* Light background */
+  --color-white:      #FFFFFF;   /* Inverted text */
 }
 
-/* 2. Reset & Base Styles */
+/* 3. Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Lora', serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
-  color: var(--color-dark);
+  background-color: var(--color-gold-pale);
+  color: var(--color-black);
 }
 
-/* 3. Navbar */
+/* Headings use EB Garamond all-caps */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'EB Garamond', serif;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+h1 {
+  font-style: italic;
+}
+h2, h3, h4, h5, h6 {
+  font-style: normal;
+}
+
+/* Utility for script accents (e.g. “& apiary”) */
+.script {
+  font-family: 'Allura', cursive;
+  color: var(--color-gold);
+}
+
+/* 4. Navbar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-secondary);
+  background-color: var(--color-black);
   padding: 0.75rem 1rem;
 }
+
 .logo-link {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
+
 .logo-img {
-  max-height: 3rem;
-  height: auto;
-  width: auto;
-  max-width: 100%;
+  height: 4rem;
+  width: auto;      /* preserve aspect ratio */
+  max-height: none; /* remove any previous 3rem cap */
 }
+
 .site-title {
   margin-left: 0.5rem;
-  color: var(--text-light);
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--color-gold);
   font-size: 1.5rem;
-  font-weight: bold;
 }
+
 .nav-links {
   list-style: none;
   display: flex;
 }
+
 .nav-links li {
   margin: 0 1rem;
 }
+
 .nav-links a {
-  color: var(--text-light);
+  font-family: 'EB Garamond', serif;
+  text-transform: uppercase;
+  color: var(--color-gold);
   text-decoration: none;
-  font-weight: bold;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--color-primary);
+  transition: color 0.2s;
 }
 
-/* 4. Generic Section Styling */
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-gold-dark);
+}
+
+/* 5. Buttons */
+.btn-primary {
+  display: inline-block;
+  font-family: 'EB Garamond', serif;
+  text-transform: uppercase;
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: var(--color-gold-dark);
+}
+
+.btn-secondary {
+  display: inline-block;
+  font-family: 'EB Garamond', serif;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover {
+  color: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
+}
+
+/* 6. Links */
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-gold);
+  transition: color 0.2s, border-bottom-style 0.2s;
+}
+a:hover {
+  color: var(--color-gold-dark);
+  border-bottom-style: solid;
+}
+
+/* 7. Generic Section Styling */
 .section {
   padding: 2rem;
   text-align: center;
 }
 
-/* 5. Footer */
+/* 8. Cards & Panels */
+.card {
+  background-color: var(--color-gold-pale);
+  border: 1px solid var(--color-gold-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 9. Footer */
 .footer {
-  background: var(--color-secondary);
-  color: var(--text-light);
+  background-color: var(--color-black);
+  color: var(--color-white);
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
 }
 
-/* NOTE: Any page-specific styling (grids, map positioning, form layout, etc.)
-   should go in its own CSS file, e.g. css/about.css, css/live.css, css/map.css, etc. */
+/* NOTE:
+   Page-specific styles (grids, maps, forms, etc.) should live in
+   their own files, e.g. css/about.css, css/live.css, css/map.css, etc.
+*/
